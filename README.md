@@ -74,6 +74,8 @@ INSERT INTO visitors (name) VALUES ('Test Visitor');
 SELECT * FROM visitors;
 "
 ```
+<img width="689" height="428" alt="Снимок экрана 2025-11-29 в 13 48 56" src="https://github.com/user-attachments/assets/085253e4-bc22-4008-bade-92f9a78ea977" />
+
 
 
 
