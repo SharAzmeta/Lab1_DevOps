@@ -11,4 +11,69 @@
 
 ## Описание хода выполнения работы
 
+# 🐳 Hello Docker + PostgreSQL
+
+Простой пример Docker-приложения с веб-сервером Nginx и базой данных PostgreSQL, демонстрирующий основы контейнеризации и оркестрации.
+
+## 🎯 Цель проекта
+
+Показать практическое использование Docker и Docker Compose для развертывания multi-service приложения с изоляцией сервисов, управлением зависимостями и persistence данных.
+
+## 📁 Структура проекта
+
+hello-docker/
+├── Dockerfile # Инструкции для сборки образа приложения
+├── docker-compose.yml # Оркестрация multi-container приложения
+├── nginx.conf # Конфигурация Nginx веб-сервера
+├── index.html # Статическая веб-страница
+└── README.md # Документация проекта
+
+
+## 🛠️ Технологический стек
+
+- **Web Server**: Nginx (Alpine Linux)
+- **Database**: PostgreSQL 15
+- **Orchestration**: Docker Compose
+- **Networking**: Docker Bridge Network
+- **Storage**: Docker Volumes
+
+## 🚀 Быстрый старт
+
+### Предварительные требования
+
+- Docker Engine ≥ 20.10
+- Docker Compose ≥ 2.0
+- Git (для клонирования репозитория)
+
+### Установка и запуск
+
+1. **Клонирование репозитория**
+   ```bash
+   git clone https://github.com/xDesh4ka/hello-docker.git
+   cd hello-docker
+2. **Запуск приложения
+   ```bash
+   docker-compose up -d
+3.Проверка приложения
+```bash
+curl http://localhost:1234
+```
+4.**Тестирование подключения к БД
+```bash
+docker-compose exec db psql -U user -d hello_docker -c "SELECT version();"
+```
+5.**Создание тестовых данных
+```bash
+docker-compose exec db psql -U user -d hello_docker -c "
+CREATE TABLE IF NOT EXISTS visitors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    visit_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO visitors (name) VALUES ('Test Visitor');
+SELECT * FROM visitors;
+"
+```
+
+
 
